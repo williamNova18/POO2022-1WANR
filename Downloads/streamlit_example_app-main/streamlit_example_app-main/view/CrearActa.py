@@ -35,6 +35,7 @@ def crearActa(st, actas_controller, controller):
                 acta.periodo = controller.evaluaciones[indice_estudiante].periodo
                 acta.director = controller.evaluaciones[indice_estudiante].nombre_director
                 acta.codirector = controller.evaluaciones[indice_estudiante].nombre_codirector
+                acta.enfasis = controller.evaluaciones[indice_estudiante].enfasis
                 acta.modalidad = controller.evaluaciones[indice_estudiante].tipo_trabajo
                 acta.jurado1 = controller.evaluaciones[indice_estudiante].nombre_jurado1
                 acta.jurado2 = controller.evaluaciones[indice_estudiante].nombre_jurado2

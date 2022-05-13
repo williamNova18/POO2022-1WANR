@@ -27,6 +27,7 @@ def agregar_evaluacion(st, controller, criterios_controller):
     coodirector = st.radio( "El trabajo tiene codirector?", ('Si', 'No') )
     if coodirector == 'Si':
         evaluacion_obj.nombre_codirector = st.text_input("Nombre del codirector")
+    evaluacion_obj.enfasis = st.text_input( "Enfasis en:" )
     evaluacion_obj.nombre_jurado1 = st.text_input("Nombre del jurado1" )
     evaluacion_obj.nombre_jurado2 = st.text_input("Nombre del jurado2" )
     lista_calificaciones = []
@@ -86,7 +87,9 @@ def listar_evaluacion(st, controller, criterios_controller ):
                 st.subheader("Tipo de trabajo: " + evaluacion.tipo_trabajo)
                 st.subheader("Titulo del trabajo: " + evaluacion.nombre_trabajo)
                 st.subheader("Nombre director: " + evaluacion.nombre_director)
-                st.subheader("Nombre director: " + evaluacion.nombre_codirector)
+                st.subheader("Nombre codirector: " + evaluacion.nombre_codirector)
+                print( evaluacion.__dir__() )
+                st.subheader("Enfasis en: " + evaluacion.enfasis)
                 st.subheader("Jurado1 : " + evaluacion.nombre_jurado1)
                 st.subheader("Jurado2 : " + evaluacion.nombre_jurado2)
                 seleccionar_criterio = st.selectbox("Escoger criterio", criterios)
@@ -118,6 +121,7 @@ def listar_evaluacion(st, controller, criterios_controller ):
                     coodirector = st.radio("El trabajo tiene codirector?", ('Si', 'No'))
                 if coodirector == 'Si':
                     evaluacion.nombre_codirector = st.text_input("Nombre del codirector", value = evaluacion.nombre_codirector )
+                evaluacion.enfasis = st.text_input("Enfasis en:", value = evaluacion.enfasis )
                 evaluacion.nombre_jurado1 = st.text_input("Nombre del jurado1", value = evaluacion.nombre_jurado1 )
                 evaluacion.nombre_jurado2 = st.text_input("Nombre del jurado2", value = evaluacion.nombre_jurado2 )
                 seleccionar_criterio = st.selectbox("Escoger criterio", criterios)

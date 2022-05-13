@@ -15,6 +15,7 @@ class EvaluacionAnteproyecto:
         self.tipo_trabajo = ""
         self.nombre_director = ""
         self.nombre_codirector = "No aplica"
+        self.enfasis = ''
         self.nombre_jurado1 = " "
         self.nombre_jurado2 = " "
         self.nota = 0.0
