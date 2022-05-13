@@ -39,7 +39,6 @@ def crearActa(st, actas_controller, controller):
                 acta.jurado1 = controller.evaluaciones[indice_estudiante].nombre_jurado1
                 acta.jurado2 = controller.evaluaciones[indice_estudiante].nombre_jurado2
                 acta.datos()
-                acta.extra()
                 contador = 1
                 for i in controller.evaluaciones[indice_estudiante].calificacion:
                     acta.num_criterio = str(contador) + "."
@@ -53,8 +52,10 @@ def crearActa(st, actas_controller, controller):
                 acta.comentario_final = 'Observaciones adicionales: ' + controller.evaluaciones[indice_estudiante].comentario_final
                 acta.nota_final()
                 acta.firmas()
-                acta.add_page()
-                acta.datos()
+                if float(acta.calificacion_final) >= 4.5:
+                    acta.add_page()
+                    acta.datos()
+                    acta.extra()
                 html = create_download_link(acta.output(dest="S").encode("latin-1"), acta.nombre_pdf)
                 actas_controller.actas.append(acta)
                 st.success("Acta Creada")

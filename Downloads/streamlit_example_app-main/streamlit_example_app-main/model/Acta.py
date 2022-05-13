@@ -26,6 +26,7 @@ class PDF(FPDF):
     unidad = ''
     decima = ''
     comentario_final = ''
+    recomendacion = ''
     def header(self):
         self.image( "C:\\Users\\willi\\OneDrive\\Escritorio\\streamlit_example_app-main (1)\\streamlit_example_app-main\\model\\img.png", 10, 8, 33 )
         self.set_font('helvetica', 'B', 20)
@@ -123,15 +124,39 @@ class PDF(FPDF):
         self.multi_cell(0, 6, 'La calificación final queda sujeta a que se implementen las siguientes correcciones: Que se revise el abstract', border=False, align='L')
         self.cell(1, 8, '', border=False, ln=0, align="L")
         self.multi_cell(0, 6,'___________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________', border=False, align='L')
-        self.cell(40, 25, '', border=False, ln=0, align="L")
 
     def firmas(self):
+        self.cell(40, 40, '', border=False, ln=0, align="L")
+        self.set_font('helvetica', '', 12)
         self.cell(65, 13, '________________________', border=False, ln=0, align="L")
         self.cell(1, 13, '________________________', border=False, ln=1, align="L")
         self.cell(55, 25, '', border=False, ln=0, align="L")
         self.cell(65, 13, 'Firma jurado 1', border=False, ln=0, align="L")
         self.cell(1, 13, 'Firma jurado 2', border=False, ln=0, align="L")
 
-
+    def extra(self):
+        self.set_font('helvetica', '', 12)
+        self.cell(1, 5, '', border=False, ln=1, align="L")
+        self.multi_cell(0, 8, 'En atención a que el Trabajo de Grado se distingue porque la calificación del trabajo es superior a 4,50 y se destaca por dos condiciones (que indicamos) de las siguientes tres como se estipula en el artículo 7.6 de las Directrices para Trabajo de Grado de Maestría:', border=False, align='L')
+        self.cell(1, 5, '', border=False, ln=1, align="L")
+        self.cell(1, 10, '  ' + chr(157) + '   El estudiante superó los objetivos propuestos. _____' , border=False, ln=1, align="L")
+        self.cell(1, 10, '  ' + chr(157) + '   El estudiante demostró una profundidad destacable en el conocimiento y tratamiento del tema. _____', border=False, ln=1, align="L")
+        self.cell(1, 10, '  ' + chr(157) + '   El tema ofrecía una dificultad superior a lo ordinario. ____',border=False, ln=1, align="L")
+        self.cell(1, 3, '', border=False, ln=1, align="L")
+        self.multi_cell(0, 8, 'Los Jurados recomendamos que el Consejo de la Facultad otorgue Mención de Honor a este Trabajo de Grado, y motivamos esta recomendación con base en las siguientes apreciaciones:', border=False, align='L')
+        self.cell(1, 3, '', border=False, ln=1, align="L")
+        self.multi_cell(0, 8, txt= self.recomendacion, border =False, align='L')
+        self.cell(1, 3, '', border=False, ln=1, align="L")
+        self.multi_cell(0, 10, '__________________________________________________________________________________', border=False, align='L')
+        self.firmas()
+        self.cell(1, 15, '', border=False, ln=1, align="L")
+        self.set_font('helvetica', 'B', 12)
+        self.cell(1, 10, 'Decisión del Consejo de la Facultad:', border=False, ln=1, align="L")
+        self.set_font('helvetica', '', 12)
+        self.multi_cell(0, 8, 'En virtud de las condiciones que indicaron los Jurados y su motivación, el Consejo de la Facultad decidió losiguiente:', border=False, align='L')
+        self.cell(1, 5, '', border=False, ln=1, align="L")
+        self.cell(1, 10, '  ' + chr(157) + '          El tema ofrecía una dificultad superior a lo ordinario. ____', border=False, ln=1, align="L")
+        self.cell(1, 10, '  ' + chr(157) + '          No Conceder Mención de Honor al Proyecto de Grado____', border=False, ln=1, align="L")
+        self.cell(1, 10, 'Tal y como se consigna en el Acta No. ___________ del Consejo de la Facultad.', border=False, ln=1, align="L")
 
 

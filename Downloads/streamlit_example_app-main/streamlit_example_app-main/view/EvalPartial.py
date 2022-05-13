@@ -45,12 +45,14 @@ def agregar_evaluacion(st, controller, criterios_controller):
         lista_calificaciones[j].comentario = st.text_input("Comentario:", key = (j + 1) * 20 )
         evaluacion_obj.nota = (lista_calificaciones[j].nota_final * lista_calificaciones[j].ponderacion) + evaluacion_obj.nota
     evaluacion_obj.comentario_final = st.text_input( "Comentario Final:" )
-
+    if evaluacion_obj.nota >= 4.5:
+        evaluacion_obj.recomendacion = st.text_input("Recomendación y apreciaciones:")
     enviado_btn = st.button("Send")
+    evaluacion_obj.nota = round(evaluacion_obj.nota, 1)
 
     if enviado_btn:
         evaluacion_obj.calificacion = lista_calificaciones
-        evaluacion_obj.nota =round( evaluacion_obj.nota, 1 )
+
         controller.agregar_evaluacion(evaluacion_obj)
         st.success("Evaluacion agregada exitosamente")
     else:
@@ -97,6 +99,8 @@ def listar_evaluacion(st, controller, criterios_controller ):
                         st.write( "" + i.comentario )
                 st.subheader("Nota final : " + str(evaluacion.nota) )
                 st.subheader("Comentario final : " + evaluacion.comentario_final)
+                if evaluacion.nota >= 4.5:
+                    st.subheader("Recomendación y apreciaciones: ", value = evaluacion.recomendacion)
             else:
                 evaluacion.id_estudiante = st.text_input("Id estudiante", value = evaluacion.id_estudiante  )
                 evaluacion.periodo = st.text_input("Periodo de evaluacion", value = evaluacion.periodo )
@@ -126,6 +130,8 @@ def listar_evaluacion(st, controller, criterios_controller ):
                         i.nota_final = ( i.nota_jurado1 + i.nota_jurado2 )
                         evaluacion.nota += ((i.nota_final) * i.ponderacion)
                 evaluacion.comentario_final = st.text_input( "Comentario final", value = evaluacion.comentario_final )
+                if evaluacion.nota >= 4.5:
+                    evaluacion.recomendacion = st( "Recomendación y apreciaciones: ", value = evaluacion.recomendacion )
                 enviar_btn = st.button( "Editar" )
                 if enviar_btn:
                     st.success( "Cambio realizado" )

@@ -19,8 +19,8 @@ class EvaluacionAnteproyecto:
         self.nombre_jurado2 = " "
         self.nota = 0.0
         self.comentario_final = ""
+        self.recomendacion = ''
 
-        # Llamado al método que inicializa la información precargada
 
     def __str__(self) -> str:
         return json.dumps(self.__dict__)
