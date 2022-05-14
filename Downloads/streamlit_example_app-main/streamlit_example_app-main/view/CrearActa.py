@@ -1,20 +1,19 @@
 from model.Acta import PDF
 from datetime import datetime
 import base64
-import numpy as np
-from PIL import Image
 
 
+# esta funcion permite crear la opcion de descargar la acta creada
 def create_download_link(val, filename):
     b64 = base64.b64encode(val)  # val looks like b'...'
     return f'<a href="data:application/octet-stream;base64,{b64.decode()}" download="{filename}.pdf">Download file</a>'
 
-
+#la funcion establece los datos del acta y permite descargarla
 def crearActa(st, actas_controller, controller):
     st.title("Crear acta")
-    lista_nombres = []
+    lista_nombres = [] # creamos un arreglo para almacenar todos los nombres de los estudiantes calificados para poner estos en el select box
     for nombres in controller.evaluaciones:
-        lista_nombres.append(nombres.nombre_autor)
+        lista_nombres.append(nombres.nombre_autor) #el ciclo recorre el arreglo que tiene todas las calificaciones y guarda en el arreglo los nombres
     seleccionar_estudiante_acta = st.selectbox("a que estudiante le quieres hacer el acta?", lista_nombres)
     indice_estudiante = 0
     key = 7

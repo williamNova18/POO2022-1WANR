@@ -42,7 +42,7 @@ class MainView:
         st.set_page_config  (page_title="Calificar trabajos finales", page_icon = img, layout="wide",
                            initial_sidebar_state="expanded")
         # Defines the number of available columns del area principal
-        self.col1, self.col2, self.col3 = st.columns([1, 1, 1])
+        self.col1, self.col2, self.col3, self.col4, self.col5 = st.columns([1, 1, 1, 1, 1])
 
         # Define lo que abrá en la barra de menu
         with st.sidebar:
